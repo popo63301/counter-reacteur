@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 
+//Orienté Objet
 class Counter extends Component {
+  state = {
+    valueCounter: 0
+  };
+
+  increment = () => {
+    this.setState({ valueCounter: this.state.valueCounter - 1 });
+  };
+
+  decrement = () => {
+    this.setState({ valueCounter: this.state.valueCounter + 1 });
+  };
+
   render() {
     return (
       <div
@@ -15,8 +28,10 @@ class Counter extends Component {
           justifyContent: 'center'
         }}
       >
-        <button>-</button>
-        <button style={{ marginLeft: '20px' }}>+</button>
+        <button onClick={this.increment}>-</button>
+        <button style={{ marginLeft: '20px' }} onClick={this.decrement}>
+          +
+        </button>
         <div
           style={{
             marginLeft: '20px',
@@ -25,7 +40,7 @@ class Counter extends Component {
             fontFamily: 'Roboto'
           }}
         >
-          19
+          {this.state.valueCounter}
         </div>
       </div>
     );
